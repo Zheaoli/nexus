@@ -12,16 +12,18 @@ type NexusConfig struct {
 	WebhookConfig []*WebhookConfig `toml:"webhook"`
 }
 
-var URLMap = map[string]interface{}{}
+var URLMap = map[string]*WebhookConfig{}
+var ConfigData *NexusConfig
 
-func ParseConfigFile(configPath string) (*NexusConfig, error) {
+func ParseConfigFile(configPath string) error {
 	data, err := ioutil.ReadFile(configPath)
 	if err != nil {
-		return nil, err
+		return err
 	}
 	var config NexusConfig
 	if err := toml.Unmarshal(data, &config); err != nil {
-		return nil, nil
+		return err
 	}
-	return &config, nil
+	ConfigData = &config
+	return nil
 }

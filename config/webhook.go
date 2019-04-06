@@ -12,5 +12,5 @@ type WechatWebhookConfig struct {
 	GroupName    string `toml:"group_name"`
 	GroupID      string `toml:"group_id"`
 	GroupOwner   string `toml:"group_owner"`
-	GroupMembers string `toml:"group_members"`
+	GroupMembers []string `toml:"group_members"`
 }

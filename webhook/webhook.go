@@ -8,6 +8,6 @@ type WBStrategy interface {
 }
 
 type WBMessage interface {
-	Parse() string
+	Parse() (string, error)
 	fmt.Stringer
 }

@@ -7,14 +7,12 @@ type WechatConfig struct {
 }
 
 type WechatServiceConfig struct {
-	corpID      string       `toml:"corpid"`
-	corpsecret  string       `toml:"corpsecret"`
+	CorpID      string       `toml:"corpid"`
+	Corpsecret  string       `toml:"Corpsecret"`
 	AccessToken string       `toml:"-"`
 	Lock        sync.RWMutex `toml:"-"`
 }
 
 func (service *WechatServiceConfig) UpdateAccessToken(accessToken string) {
-	service.Lock.Lock()
-	defer service.Lock.Unlock()
 	service.AccessToken = accessToken
 }

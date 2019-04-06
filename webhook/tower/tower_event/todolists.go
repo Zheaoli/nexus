@@ -1,4 +1,4 @@
-package event
+package tower_event
 
 import (
 	"encoding/json"
@@ -22,7 +22,7 @@ type TodoListEventData struct {
 }
 type TodoListEventContent struct {
 	Guid      string               `json:"guid"`
-	Name      string               `json:"name"`
+	Name      string               `json:"title"`
 	UpdatedAt string               `json:"updated_at"`
 	Handler   TodoListEventHandler `json:"handler"`
 }
@@ -31,14 +31,14 @@ type TodoListEventHandler struct {
 	NickName string `json:"nickname"`
 }
 
-func New(message string, url string) (*TodoListsEvent, error) {
+func NewTodoLists(message string, url string) (*TodoListsEvent, error) {
 	var todoList TodoListEventBody
 	if err := json.Unmarshal([]byte(message), &todoList); err != nil {
 		return nil, err
 	}
 	templatePath := ""
 	if val, ok := config.URLMap[url]; ok {
-		templatePath = val.(*config.WebhookConfig).TemplatePath
+		templatePath = val.TemplatePath + "/tower"
 	} else {
 		return nil, ConfigNotExist
 	}

@@ -1,4 +1,4 @@
-package event
+package tower_event
 
 import "errors"
 
@@ -8,3 +8,8 @@ type ProjectEvent struct {
 }
 
 var ConfigNotExist = errors.New("config not exist")
+
+const (
+	TodoListsEventF = "todolists"
+	TodosEventF      = "todos"
+)

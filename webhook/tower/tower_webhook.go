@@ -17,5 +17,5 @@ func (tw *TWWebHook) String() string {
 }
 
 func (tw *TWWebHook) ParseMessage() (webhook.WBMessage, error) {
-	return &TWMessage{}, nil
+	return NewMessage(tw.message, tw.event, tw.sourceurl)
 }
