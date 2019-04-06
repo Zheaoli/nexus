@@ -1,0 +1,6 @@
+version: '3'
+services:
+  web:
+    build: nexus.dockerfile
+    ports:
+      - 8080:8086

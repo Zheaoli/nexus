@@ -1,13 +1,21 @@
 package tower
 
-type TWWebHook struct {
+import "github.com/Zheaoli/nexus/webhook"
 
+type TWWebHook struct {
+	message   string
+	event     string
+	sourceurl string
 }
 
-func (tw *TWWebHook) String() string{
+func New(message string, event string, url string) *TWWebHook {
+	return &TWWebHook{message: message, event: event, sourceurl: url}
+}
+
+func (tw *TWWebHook) String() string {
 	return "Tower Webhook messgae"
 }
 
-func (tw  *TWWebHook)ParseMessage() (TWMessage, error){
-	return nil,nil
+func (tw *TWWebHook) ParseMessage() (webhook.WBMessage, error) {
+	return &TWMessage{}, nil
 }

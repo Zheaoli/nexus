@@ -1,10 +1,13 @@
 package webhook
 
+import "fmt"
+
 type WBStrategy interface {
 	ParseMessage() (WBMessage, error)
+	fmt.Stringer
 }
 
 type WBMessage interface {
-	GetMessageType() string
-	GetMessageContent()
+	Parse() string
+	fmt.Stringer
 }
